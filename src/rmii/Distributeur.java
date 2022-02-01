@@ -2,13 +2,12 @@ package rmii;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Distributeur extends UnicastRemoteObject implements IRetireRemote,IDeposeRemote {
+public class Distributeur extends UnicastRemoteObject implements ICanette {
 
     private List<Canette> canettes = new ArrayList<>();
     private int capacité = 50;
@@ -46,6 +45,7 @@ public class Distributeur extends UnicastRemoteObject implements IRetireRemote,I
             }
         }
     }
+
     public static void main(String[] args) {
         try{
             System.out.println("Serveur: Construction de l'implementation");
@@ -57,6 +57,8 @@ public class Distributeur extends UnicastRemoteObject implements IRetireRemote,I
             Naming.rebind("rmi://services.isi.tn:2004/Depot", distributeur);
 
             System.out.println("Attente des invocations des clients");
+
+
 
         }catch (MalformedURLException | RemoteException e) {
             System.out.println("Erreur d'accès a un objet distant");

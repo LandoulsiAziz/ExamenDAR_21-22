@@ -3,8 +3,8 @@ package rmii;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface IDeposeRemote extends Remote {
+public interface ICanette extends Remote {
 
     void deposeCanette() throws RemoteException, InterruptedException;
-
+    void retireCanette() throws RemoteException, InterruptedException;
 }

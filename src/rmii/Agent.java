@@ -8,9 +8,9 @@ import java.rmi.RemoteException;
 public class Agent extends Thread{
 
     public static boolean dispo;
-    private IDeposeRemote distributeur;
+    private ICanette distributeur;
 
-    public Agent(IDeposeRemote distributeur) {
+    public Agent(ICanette distributeur) {
         this.distributeur = distributeur;
     }
 
@@ -24,7 +24,7 @@ public class Agent extends Thread{
     }
     public static void main(String[] args) throws InterruptedException, RemoteException, MalformedURLException, NotBoundException {
 
-        IDeposeRemote distributeur = (IDeposeRemote) Naming.lookup("rmi://services.isi.tn:2004/Depot");
+        ICanette distributeur = (ICanette) Naming.lookup("rmi://services.isi.tn:2004/Depot");
 
         Agent agent1 = new Agent(distributeur);
         Agent agent2 = new Agent(distributeur);
